@@ -62,6 +62,18 @@ if not os.path.exists(Dino_path):
     )
 print(f"Dino checkpoints downloaded to {Dino_path}")
 
+# download SAM model
+SAM_path = "examples/blobctrl/models/sam/sam_vit_h_4b8939.pth"
+if not os.path.exists(SAM_path):
+    os.makedirs(os.path.dirname(SAM_path), exist_ok=True)
+    import urllib.request
+    print(f"Downloading SAM model...")
+    urllib.request.urlretrieve(
+        "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth",
+        SAM_path
+    )
+    print(f"SAM model downloaded to {SAM_path}")
+
 
 ## load models and pipeline
 blobnet_path = "./examples/blobctrl/models/blobnet"
@@ -169,7 +181,7 @@ If BlobCtrl is helpful, please help to ⭐ the <a href='' target='_blank'>Github
 <br>
 If our work is useful for your research, please consider citing:
 ```bibtex
-@misc{li2024brushedit,
+@misc{li2025blobctrl,
   title={BlobCtrl: A Unified and Flexible Framework for Element-level Image Generation and Editing}, 
   author={Yaowei Li},
   year={2025},
@@ -1531,6 +1543,8 @@ with block as demo:
                     with gr.Tab(elem_classes="feedback", label="Edited Preview"):
                         edited_result_gallery = gr.Gallery(label='Edited Preview', height=320, elem_id="gallery", show_label=True, interactive=False, preview=True)
             
+
+            gr.Markdown("### Click to adjust the target blob size 👇", show_label=False)
             with gr.Row():
                 with gr.Group():
                     resize_blob_slider_maintain_aspect_ratio = gr.Slider(label="Resize Blob (Maintain Aspect Ratio)", minimum=0.1, maximum=2, step=0.05, value=1)
