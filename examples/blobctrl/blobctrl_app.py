@@ -160,8 +160,8 @@ head= r"""
     <h1> BlobCtrl: A Unified and Flexible Framework for Element-level Image Generation and Editing </h1>
     <div style="display: flex; justify-content: center; align-items: center; text-align: center;">
         <a href='https://liyaowei-stu.github.io/project/BlobCtrl/'><img src='https://img.shields.io/badge/Project_Page-BlobCtrl-green' alt='Project Page'></a>
-        <a href=''><img src='https://img.shields.io/badge/Paper-Arxiv-blue'></a>
-        <a href=''><img src='https://img.shields.io/badge/Code-Github-orange'></a>
+        <a href='http://arxiv.org/abs/2503.13434'><img src='https://img.shields.io/badge/Paper-Arxiv-blue'></a>
+        <a href='https://github.com/TencentARC/BlobCtrl'><img src='https://img.shields.io/badge/Code-Github-orange'></a>
     </div>
     </br>
 </div>
@@ -174,7 +174,7 @@ Official Gradio Demo for <a href=''><b>BlobCtrl: A Unified and Flexible Framewor
 
 
 citation = r"""
-If BlobCtrl is helpful, please help to ⭐ the <a href='' target='_blank'>Github Repo</a>. Thanks!
+If BlobCtrl is helpful, please help to ⭐ the <a href='https://github.com/TencentARC/BlobCtrl' target='_blank'>Github Repo</a>. Thanks!
 [![GitHub Stars](https://img.shields.io/github/stars/TencentARC/BlobCtrl?style=social)]()
 ---
 📝 **Citation**
