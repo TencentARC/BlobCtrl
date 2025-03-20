@@ -44,7 +44,7 @@ Youtube Introduction Video: [Youtube](https://youtu.be/rdR4QRR-mbE).
 - [TBD] Release the data preprocessing code.
 - [TBD] Release the BlobData and BlobBench.
 - [TBD] Release the training code
-- [20/03/2025] Release the inference code.
+- [X] [20/03/2025] Release the inference code.
 - [X] [17/03/2025] Release the paper, webpage and gradio demo.
 
 ## 🛠️ Method Overview
