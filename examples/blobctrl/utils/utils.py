@@ -211,7 +211,7 @@ def splat_features(
                 scores_viz = d_scores
                 
             n_gaussians = xs.shape[-1]
-            ret.update(visualize_features(xs, ys, viz_size, n_gaussians, scores_viz, **kwargs))
+            ret.update(visualize_features(viz_size, n_gaussians, scores_viz, kwargs.get("viz_colors", None)))
             # from PIL import Image
             # import numpy as np
             # viz_colors = torch.load("BED_CONF_COLORS.pt")
@@ -243,7 +243,7 @@ def splat_features(
 
 @torch.no_grad()
 def visualize_features(viz_size=64, n_gaussians=None, scores=None,
-                        viz_colors=None, **kwargs) -> Dict[str, Tensor]:
+                        viz_colors=None) -> Dict[str, Tensor]:
     n_gaussians = n_gaussians+1
    
     rand_colors = viz_colors is None

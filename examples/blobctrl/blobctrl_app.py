@@ -394,59 +394,59 @@ def _get_ellipse(mask):
 
 def ellipse_to_gaussian(x, y, a, b, theta):
     """
-    将椭圆参数转换为高斯分布的均值和协方差矩阵。
+    Convert ellipse parameters to mean and covariance matrix of a Gaussian distribution.
 
-    参数:
-    x (float): 椭圆中心的 x 坐标。
-    y (float): 椭圆中心的 y 坐标。
-    a (float): 椭圆的短半轴长度。
-    b (float): 椭圆的长半轴长度。
-    theta (float): 椭圆的旋转角度（以弧度为单位）, 长半轴逆时针角度。
+    Parameters:
+    x (float): x-coordinate of the ellipse center.
+    y (float): y-coordinate of the ellipse center.
+    a (float): Length of the minor semi-axis of the ellipse.
+    b (float): Length of the major semi-axis of the ellipse.
+    theta (float): Rotation angle of the ellipse (in radians), counterclockwise angle of the major axis.
 
-    返回:
-    mean (numpy.ndarray): 高斯分布的均值，形状为 (2,) 的数组，表示 (x, y) 坐标。
-    cov_matrix (numpy.ndarray): 高斯分布的协方差矩阵，形状为 (2, 2) 的数组。
+    Returns:
+    mean (numpy.ndarray): Mean of the Gaussian distribution, an array of shape (2,) representing (x, y) coordinates.
+    cov_matrix (numpy.ndarray): Covariance matrix of the Gaussian distribution, an array of shape (2, 2).
     """
-    # 均值
+    # Mean
     mean = np.array([x, y])
     
-    # 协方差的主对角线元素
+    # Diagonal elements of the covariance matrix
     # sigma_x = b / np.sqrt(2)
     # sigma_y = a / np.sqrt(2)
-    # 不除以 sqrt(2) 也是可以的。这个转换主要是为了在特定的统计上下文中，
-    # 使得椭圆的半轴长度对应于高斯分布的一个标准差。
-    # 这样做的目的是为了使得椭圆的面积包含了高斯分布约68%的概率质量（在一维高斯分布中，一个标准差的范围内包含了约68%的概率质量）。
+    # Not dividing by sqrt(2) is also acceptable. This conversion is mainly for specific statistical contexts,
+    # to make the semi-axis length of the ellipse correspond to one standard deviation of the Gaussian distribution.
+    # The purpose is to make the ellipse area contain about 68% of the probability mass of the Gaussian distribution
+    # (in a one-dimensional Gaussian distribution, one standard deviation contains about 68% of the probability mass).
 
-    # 协方差的主对角线元素
+    # Diagonal elements of the covariance matrix
     sigma_x = b 
     sigma_y = a 
-    # 协方差矩阵（未旋转）
+    # Covariance matrix (before rotation)
     cov_matrix = np.array([[sigma_x**2, 0],
                             [0, sigma_y**2]])
     
-    # 旋转矩阵
+    # Rotation matrix
     R = np.array([[np.cos(theta), -np.sin(theta)],
                   [np.sin(theta), np.cos(theta)]])
     
-    # 旋转协方差矩阵
+    # Rotate the covariance matrix
     cov_matrix_rotated = R @ cov_matrix @ R.T
     
-    cov_matrix_rotated[0, 1] *= -1  # 反转协方差矩阵的非对角元素
-    cov_matrix_rotated[1, 0] *= -1  # 反转协方差矩阵的非对角元素
+    cov_matrix_rotated[0, 1] *= -1  # Reverse the non-diagonal elements of the covariance matrix
+    cov_matrix_rotated[1, 0] *= -1  # Reverse the non-diagonal elements of the covariance matrix
     
     # eigenvalues, eigenvectors = np.linalg.eig(cov_matrix_rotated)
     
     return mean, cov_matrix_rotated
 
-
 def normalize_gs(mean, cov_matrix_rotated, width, height):
-    # 归一化 mean
+    # Normalize mean
     normalized_mean = mean / np.array([width, height])
     
-    # 计算最大长度用于归一化协方差矩阵
+    # Calculate maximum length for normalizing the covariance matrix
     max_length = np.sqrt(width**2 + height**2)
     
-    # 归一化协方差矩阵
+    # Normalize covariance matrix
     normalized_cov_matrix = cov_matrix_rotated / (max_length ** 2)
     
     return normalized_mean, normalized_cov_matrix
@@ -693,9 +693,9 @@ def get_object_region_from_mask(mask, original_image):
 
 def extract_contours(object_image):
     """
-    从物体图像中提取轮廓
-    :param object_image: 输入的物体图像，形状为 (h, w, 3)，值范围为 [0, 255]
-    :return: 轮廓图像，
+    Extract contours from an object image
+    :param object_image: Input object image, shape (h, w, 3), value range [0, 255]
+    :return: Contour image
     """
     # 将图像转换为灰度图
     gray_image = cv2.cvtColor(object_image, cv2.COLOR_BGR2GRAY)
@@ -1767,7 +1767,7 @@ with block as demo:
 
     remove_blob_box.change(
         remove_blob_box_func,
-        [editable_blob, original_image, tracking_points, ellipse_lists, ori_result_gallery],
+        [editable_blob, original_image, tracking_points, ellipse_lists, ori_result_gallery, remove_blob_box],
         [editable_blob, ellipse_lists, edited_result_gallery, ori_result_gallery, resize_blob_slider_maintain_aspect_ratio]
     )
 
@@ -1800,7 +1800,7 @@ with block as demo:
     ## upload user-specified object image
     init_object_image.upload(
         upload_object_image,
-        [init_object_image, edited_result_gallery],
+        [init_object_image, edited_result_gallery, remove_blob_box],
         [object_image_gallery, remove_blob_box]
     )
 
@@ -1839,5 +1839,5 @@ with block as demo:
 
 
 ## if have a localhost access error, try to use the following code
-# demo.launch(server_name="0.0.0.0", server_port=12346)
-demo.launch()
+demo.launch(server_name="0.0.0.0", server_port=12346)
+# demo.launch()

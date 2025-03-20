@@ -30,7 +30,7 @@ Youtube Introduction Video: [Youtube](https://youtu.be/rdR4QRR-mbE).
 **📖 Table of Contents**
 
 - [BlobCtrl](#blobctrl)
-  - [Update Logs](#update-logs)
+  - [🔥 Update Logs](#-update-logs)
   - [🛠️ Method Overview](#️-method-overview)
   - [🚀 Getting Started](#-getting-started)
   - [🏃🏼 Running Scripts](#-running-scripts)
@@ -39,12 +39,12 @@ Youtube Introduction Video: [Youtube](https://youtu.be/rdR4QRR-mbE).
   - [❓ Contact](#-contact)
   - [🌟 Star History](#-star-history)
 
-## Update Logs
+## 🔥 Update Logs
 
 - [TBD] Release the data preprocessing code.
 - [TBD] Release the BlobData and BlobBench.
-- [TBD] Release the training and inference code.
-
+- [TBD] Release the training code
+- [20/03/2025] Release the inference code.
 - [X] [17/03/2025] Release the paper, webpage and gradio demo.
 
 ## 🛠️ Method Overview
@@ -134,6 +134,18 @@ sh examples/blobctrl/scripts/run_app.sh
 ```
 
 </details>
+
+<details>
+<summary><b>BlobCtrl Inference 🌠</b></summary>
+<br>
+You can run the inference using the script:
+
+```
+examples/blobctrl/scripts/inference.sh
+```
+
+</details>
+
 
 ## 🤝🏼 Cite Us
 
