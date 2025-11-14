@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blobctrl"
+version = "0.1.0"
+description = "BlobCtrl: Taming Controllable Blob for Element-level Image Editing"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Yaowei Li" }]
+license = { text = "MIT" }
+
+# 按需增删依赖
+dependencies = [
+  "torch",
+  "torchvision",
+  "diffusers",
+  "transformers",
+  "accelerate",
+  "numpy",
+  "opencv-python",
+  "pillow",
+  "tqdm",
+  "matplotlib",
+  "scipy",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["blobctrl*"]
+
