@@ -24,9 +24,9 @@ Keywords: Image Generation, Image Editing, Diffusion Models, Element-level
   <a href="https://liyaowei-stu.github.io/project/BlobCtrl/">🌐Project Page</a> |
   <a href="http://arxiv.org/abs/2503.13434">📜Arxiv</a> |
   <a href="https://youtu.be/rdR4QRR-mbE">📹Video</a> |
-  <a href="https://huggingface.co/spaces/Yw22/BlobCtrl">🤗Hugging Face Demo</a> |
-  <a href="https://huggingface.co/Yw22/BlobCtrl">🤗Hugging Model</a>
-  <a href="https://huggingface.co/datasets/Yw22/BlobData">🤗Hugging Data</a>
+  <a href="https://huggingface.co/spaces/Yw22/BlobCtrl">🤗HuggingFace Demo</a> |
+  <a href="https://huggingface.co/Yw22/BlobCtrl">🤗HuggingFace Model</a> |
+  <a href="https://huggingface.co/datasets/Yw22/BlobData">🤗HuggingFace Data</a>
 </p>
 
 
