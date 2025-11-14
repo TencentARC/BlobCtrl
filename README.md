@@ -57,7 +57,7 @@ Youtube Introduction Video: [Youtube](https://youtu.be/rdR4QRR-mbE).
 By treating blobs as visual primitives, BlobCtrl **disentangles layout from appearance**, enabling fine-grained and controllable object-level manipulations such as **addition, removal, scaling, and replacement**.
 
 <p align="center">
-  <img src="examples/blobctrl/assets/blobctrl_teaser.jpg" width="80%">
+  <img src="assets/blobctrl_teaser.jpg" width="80%">
 </p>
 
 ## 🚀 Getting Started
